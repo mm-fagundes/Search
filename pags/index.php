@@ -18,7 +18,17 @@
         <div class="div1">
             <h1 id="tt1">Buscar é fácil, encontrar o que te atende é Search.</h1>
         </div>
+        <div class="div2">
             <div class="menu">
+                <div class="cartao">
+                    <div class="tt-cartao">
+                        <h1>Padeiro Roberto</h1>
+                    </div>
+                    <div class="img-container">
+                        <img src="../imgs/padeiro.jpeg" alt="" width="200px">
+                    </div>
+                    
+                </div>
                 <div class="cartao">
                     <div class="tt-cartao">
                         <h1>Padeiro Roberto</h1>
@@ -93,7 +103,7 @@
                 </div>
             </div>
         </div>    
-
+</div>
 
     </div>
 
