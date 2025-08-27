@@ -1,0 +1,83 @@
+
+/* Div que engloba todo o site */
+.master{
+    border: 1px solid white;
+    background-color: black;
+}
+
+/* Partição 1 */
+.part1{
+    border: 1px solid red;
+    height: 1200px;
+}
+
+/* Divisão 1*/
+
+    .div1{
+        height: 35%;
+        border: 1px solid blue;
+    }
+
+    .div1 h1{
+        color: white;
+        font-size: 90px;
+    }
+
+    #tt1{
+        width: 50%;
+        position: relative;
+        left: 5%;
+        top: 10%;
+    }
+
+/* Divisão 2*/
+
+    .div2{
+        width: 100%;
+        height: 75%;
+        border: 5px solid skyblue;
+        display: flex;
+        justify-content: center;
+    }
+
+    .menu{
+        border: 1px solid white;
+        height: 50%;
+        width: 100%;
+        display: flex;
+        flex-direction: row;
+        justify-content: flex-start;
+        flex-wrap: wrap;
+        gap: 50px;
+    }
+
+    .cartao{
+        width: 3in;
+        height: 3in;
+        border: 1px solid white;
+    }
+
+        .tt-cartao{
+            border: 1px solid white;
+            height: 16%;
+
+        }
+
+        .tt-cartao h1{
+            font-size: 35px;
+            color: white;
+            text-align: center;
+        }
+        
+        .img-container{
+            border: 1px solid yellow;
+            height: 84%;
+            overflow: hidden;
+        }
+
+        .img-container img{
+            object-fit: cover;
+            width: 100%;
+            height: 100%;
+        }
+
