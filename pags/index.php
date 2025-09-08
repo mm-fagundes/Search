@@ -16,7 +16,7 @@
 
     <div class="part1">
         <div class="div1">
-            <h1 id="tt1">Buscar é fácil, encontrar o que te atende é Search.</h1>
+            <h1 id="tt1">Buscar é fácil, encontrar o que te atende é <span class="Search">Search</span>.</h1>
         </div>
         <div class="div2">
             <div class="menu">

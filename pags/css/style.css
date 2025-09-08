@@ -1,30 +1,36 @@
 
 /* Div que engloba todo o site */
 .master{
-    border: 1px solid white;
-    background-color: black;
 }
 
 /* Partição 1 */
 .part1{
-    border: 1px solid red;
     height: 1200px;
+    background: #4cbae6;
+    background: linear-gradient(180deg, rgba(76, 186, 230, 1) 0%, rgba(232, 218, 245, 1) 100%, rgba(237, 221, 83, 1) 100%);
 }
 
-/* Divisão 1*/
+/* Divisão 1*/    
 
     .div1{
         height: 35%;
-        border: 1px solid blue;
     }
 
     .div1 h1{
         color: white;
-        font-size: 90px;
+        font-size: 120px;
+        text-shadow: 2px 0px 0px #2988ae;
+        line-height: 0.8;
+    }
+
+    .Search{
+        color: #7780FF;
+        text-shadow: 2px 0px 0px white;
+        text-decoration: underline;
     }
 
     #tt1{
-        width: 50%;
+        width: 55%;
         position: relative;
         left: 5%;
         top: 10%;
@@ -35,13 +41,11 @@
     .div2{
         width: 100%;
         height: 75%;
-        border: 5px solid skyblue;
         display: flex;
         align-content: center;
     }
 
     .menu{
-        border: 1px solid white;
         height: 90%;
         width: 100%;
         display: flex;
@@ -54,11 +58,10 @@
     .cartao{
         width: 3in;
         height: 3in;
-        border: 1px solid white;
+        border-radius: 40px;
     }
 
         .tt-cartao{
-            border: 1px solid white;
             height: 16%;
 
         }
@@ -67,10 +70,10 @@
             font-size: 35px;
             color: white;
             text-align: center;
+            text-shadow: 2px 0px 0px #2988ae;
         }
         
         .img-container{
-            border: 1px solid yellow;
             height: 84%;
             overflow: hidden;
         }
@@ -79,5 +82,6 @@
             object-fit: cover;
             width: 100%;
             height: 100%;
+            border-radius: 40px;
         }
 
