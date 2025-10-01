@@ -1,19 +1,18 @@
 <?php
-// connection.php
-
-$host = "localhost";      // servidor do banco
-$db   = "search_db";      // nome do banco de dados
-$user = "root";           // usuário do banco
-$pass = "";               // senha do banco
+$servername = "localhost";
+$username = "root"; // Altere para o seu usuário do MySQL
+$password = "";     // Altere para a sua senha do MySQL
+$dbname = "search_db";
 
 // Cria a conexão
-$conn = new mysqli($host, $user, $pass, $db);
+$conn = new mysqli($servername, $username, $password, $dbname);
 
-// Verifica se houve erro na conexão
+// Verifica a conexão
 if ($conn->connect_error) {
     die("Conexão falhou: " . $conn->connect_error);
 }
 
-// Opcional: definir charset para evitar problemas com acentos
+// Define charset
 $conn->set_charset("utf8mb4");
 ?>
+
