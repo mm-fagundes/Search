@@ -1,43 +1,69 @@
-import { supabase } from './supabase';
+import apiService from './apiService';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 
 export const authService = {
-  // Login do prestador com tratamento de erro melhorado
   async signIn(email, password) {
     try {
-      // Validação básica
-      if (!email || !password) {
-        return { success: false, error: 'Email e senha são obrigatórios' };
+      const response = await apiService.login(email, password, 'prestador');
+      
+      if (response.success) {
+        // Salvar dados do usuário no AsyncStorage
+        await AsyncStorage.setItem('user', JSON.stringify(response.user));
+        await AsyncStorage.setItem('userType', response.user_type);
+        
+        return {
+          success: true,
+          user: response.user,
+          userType: response.user_type
+        };
+      } else {
+        return {
+          success: false,
+          error: response.error || 'Erro no login'
+        };
       }
-
-      const { data, error } = await supabase.auth.signInWithPassword({
-        email: email.trim(),
-        password: password,
-      });
-
-      if (error) {
-        console.error('Erro de autenticação:', error);
-        return { success: false, error: this.getErrorMessage(error) };
-      }
-
-      if (!data.user) {
-        return { success: false, error: 'Usuário não encontrado' };
-      }
-
-      return { success: true, user: data.user, session: data.session };
     } catch (error) {
       console.error('Erro no login:', error);
-      return { success: false, error: 'Erro de conexão. Tente novamente.' };
+      return {
+        success: false,
+        error: 'Erro de conexão. Verifique sua internet.'
+      };
     }
   },
 
-  // Logout
+  async signUp(userData) {
+    try {
+      const response = await apiService.register(userData, 'prestador');
+      
+      if (response.success) {
+        // Salvar dados do usuário no AsyncStorage
+        await AsyncStorage.setItem('user', JSON.stringify(response.user));
+        await AsyncStorage.setItem('userType', response.user_type);
+        
+        return {
+          success: true,
+          user: response.user,
+          userType: response.user_type
+        };
+      } else {
+        return {
+          success: false,
+          error: response.error || 'Erro no cadastro'
+        };
+      }
+    } catch (error) {
+      console.error('Erro no cadastro:', error);
+      return {
+        success: false,
+        error: 'Erro de conexão. Verifique sua internet.'
+      };
+    }
+  },
+
   async signOut() {
     try {
-      const { error } = await supabase.auth.signOut();
-      if (error) {
-        console.error('Erro no logout:', error);
-        return { success: false, error: this.getErrorMessage(error) };
-      }
+      await AsyncStorage.removeItem('user');
+      await AsyncStorage.removeItem('userType');
       return { success: true };
     } catch (error) {
       console.error('Erro no logout:', error);
@@ -45,89 +71,45 @@ export const authService = {
     }
   },
 
-  // Verificar sessão atual
-  async getCurrentSession() {
-    try {
-      const { data: { session }, error } = await supabase.auth.getSession();
-      if (error) {
-        console.error('Erro ao verificar sessão:', error);
-        return { success: false, error: this.getErrorMessage(error) };
-      }
-      return { success: true, session };
-    } catch (error) {
-      console.error('Erro ao verificar sessão:', error);
-      return { success: false, error: 'Erro ao verificar sessão' };
-    }
-  },
-
-  // Obter usuário atual
   async getCurrentUser() {
     try {
-      const { data: { user }, error } = await supabase.auth.getUser();
-      if (error) {
-        console.error('Erro ao obter usuário:', error);
-        return { success: false, error: this.getErrorMessage(error) };
+      const userData = await AsyncStorage.getItem('user');
+      const userType = await AsyncStorage.getItem('userType');
+      
+      if (userData && userType) {
+        return {
+          success: true,
+          user: JSON.parse(userData),
+          userType: userType
+        };
+      } else {
+        return { success: false, user: null };
       }
-      return { success: true, user };
     } catch (error) {
-      console.error('Erro ao obter usuário:', error);
-      return { success: false, error: 'Erro ao obter dados do usuário' };
+      console.error('Erro ao obter usuário atual:', error);
+      return { success: false, user: null };
     }
   },
 
-  // Registrar novo prestador
-  async signUp(email, password, userData) {
-    try {
-      if (!email || !password) {
-        return { success: false, error: 'Email e senha são obrigatórios' };
-      }
-
-      const { data, error } = await supabase.auth.signUp({
-        email: email.trim(),
-        password: password,
-        options: {
-          data: userData
-        }
-      });
-
-      if (error) {
-        console.error('Erro no registro:', error);
-        return { success: false, error: this.getErrorMessage(error) };
-      }
-
-      return { success: true, user: data.user };
-    } catch (error) {
-      console.error('Erro no registro:', error);
-      return { success: false, error: 'Erro ao criar conta' };
-    }
+  async getCurrentSession() {
+    return this.getCurrentUser();
   },
 
-  // Listener para mudanças de autenticação
   onAuthStateChange(callback) {
-    try {
-      return supabase.auth.onAuthStateChange(callback);
-    } catch (error) {
-      console.error('Erro ao configurar listener de auth:', error);
-      return { data: { subscription: null }, error };
-    }
+    // Implementação simplificada para compatibilidade
+    // Em uma implementação real, você poderia usar um listener de mudanças no AsyncStorage
+    console.log('onAuthStateChange chamado');
+    return () => {}; // Retorna função de cleanup
   },
 
-  // Função auxiliar para tratar mensagens de erro
   getErrorMessage(error) {
-    if (!error) return 'Erro desconhecido';
-    
-    switch (error.message) {
-      case 'Invalid login credentials':
-        return 'Email ou senha incorretos';
-      case 'Email not confirmed':
-        return 'Email não confirmado';
-      case 'Too many requests':
-        return 'Muitas tentativas. Tente novamente em alguns minutos';
-      case 'User not found':
-        return 'Usuário não encontrado';
-      default:
-        return error.message || 'Erro de autenticação';
-    }
+    const errorMessages = {
+      'Email ou senha incorretos': 'Email ou senha incorretos',
+      'Email já cadastrado': 'Este email já está cadastrado',
+      'Erro de conexão': 'Erro de conexão. Verifique sua internet.',
+    };
+
+    return errorMessages[error] || error || 'Erro desconhecido';
   }
 };
 
