@@ -5,6 +5,7 @@ body {
     align-items: center;
     justify-content: center;
     min-height: 100vh;
+    padding: 0;
     margin: 0;
     background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); /* Gradiente tecnológico */
     color: #333;
@@ -13,6 +14,8 @@ body {
 .container {
     text-align: center;
     padding: 20px;
+    border: 1px solid black;
+    margin: none;
 }
 
 h1 {
@@ -111,4 +114,30 @@ button:hover {
     .card {
         width: 90%;
     }
+}
+
+#bt-icon{
+    margin-right: 1vh;
+}
+
+#main-icon{
+    color: white;
+    font-size: 10vh;
+    border: 4px solid white;
+    padding: 3vh;
+    border-radius: 3vh;
+    margin-right: 4vh;
+}
+
+#main-title{
+    color: white;
+    font-size: 12vh;
+    margin-bottom: 8.5vh;
+}
+
+.brand{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
 }

@@ -10,7 +10,13 @@
 </head>
 <body>
     <div class="container">
-        <h1>Bem-vindo! Escolha seu perfil:</h1>
+        <div class="brand">
+            <div class="main-icon">
+                <i class="fa-solid fa-magnifying-glass fa-7xl" id="main-icon"></i>
+            </div>
+            <h1 id="main-title">Search</h1>
+        </div>
+        
         <div class="cards">
             <div class="card">
                 <i class="fas fa-user icon"></i> <!-- Ícone para Cliente -->
@@ -22,8 +28,8 @@
                     <li><i class="fas fa-check"></i> Avalie e comente serviços</li>
                 </ul>
                 <div class="actions">
-                    <a href="#"><button>Fazer Login</button></a>
-                    <a href="#"><button>Cadastrar</button></a>
+                    <a href="#"><button><i class="fa-solid fa-arrow-up" id="bt-icon"></i>Fazer Login</button></a>
+                    <a href="#"><button><i class="fa-solid fa-plus" id="bt-icon"></i>Cadastrar</button></a>
                 </div>
             </div>
             <div class="card">
@@ -36,8 +42,9 @@
                     <li><i class="fas fa-check"></i> Ganhe visibilidade online</li>
                 </ul>
                 <div class="actions">
-                    <a href="#"><button>Fazer Login</button></a>
-                    <a href="#"></href><button>Cadastrar</button></a>
+                    <a href="#"><button><i class="fa-solid fa-arrow-up" id="bt-icon"></i>Fazer Login</button></a>
+                    <a href="#"></href><button><i class="fa-solid fa-plus" id="bt-icon"></i>Cadastrar</button></a>
+                    
                 </div>
             </div>
         </div>
