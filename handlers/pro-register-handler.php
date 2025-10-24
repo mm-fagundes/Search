@@ -11,12 +11,11 @@ if ($_SERVER["REQUEST_METHOD"] == "POST"){
     $confirm_password = trim($_POST['confirm-password']);
     
     if(!filter_var($email, FILTER_VALIDATE_EMAIL)){
-
-        echo "macaco";
-
-
+        echo "Email inválido, tente novamente";
     }
-
+    else{
+        $sql = "insert into "
+    }
 
 }
 
