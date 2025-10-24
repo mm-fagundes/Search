@@ -28,8 +28,8 @@
                     <li><i class="fas fa-check"></i> Avalie e comente serviços</li>
                 </ul>
                 <div class="actions">
-                    <a href="#"><button><i class="fa-solid fa-arrow-up" id="bt-icon"></i>Fazer Login</button></a>
-                    <a href="#"><button><i class="fa-solid fa-plus" id="bt-icon"></i>Cadastrar</button></a>
+                    <a href="user/login-user.php"><button><i class="fa-solid fa-arrow-up" id="bt-icon"></i>Fazer Login</button></a>
+                    <a href="user/register-user.php"><button><i class="fa-solid fa-plus" id="bt-icon"></i>Cadastrar</button></a>
                 </div>
             </div>
             <div class="card">
@@ -42,8 +42,8 @@
                     <li><i class="fas fa-check"></i> Ganhe visibilidade online</li>
                 </ul>
                 <div class="actions">
-                    <a href="#"><button><i class="fa-solid fa-arrow-up" id="bt-icon"></i>Fazer Login</button></a>
-                    <a href="#"></href><button><i class="fa-solid fa-plus" id="bt-icon"></i>Cadastrar</button></a>
+                    <a href="pro/login-pro.php"><button><i class="fa-solid fa-arrow-up" id="bt-icon"></i>Fazer Login</button></a>
+                    <a href="pro/register-pro.php"></href><button><i class="fa-solid fa-plus" id="bt-icon"></i>Cadastrar</button></a>
                     
                 </div>
             </div>
